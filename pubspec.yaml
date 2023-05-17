@@ -32,6 +32,12 @@ dependencies:
   # Localization
   intl: ^0.17.0
 
+  # DI
+  get_it: ^7.6.0
+
+  # Router
+  go_router: ^7.0.1
+
   # Theme
   flutter_svg: ^2.0.5
   google_fonts: ^4.0.4
