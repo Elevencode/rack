@@ -1,6 +1,20 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:rack_app/core/services/injection.dart' as di;
+import 'package:rack_app/feature/presentation/router/router.dart';
 
 void main() {
+  runZonedGuarded(
+    () {
+      WidgetsFlutterBinding.ensureInitialized();
+
+      di.inject();
+    },
+    (error, stack) {
+      debugPrint('Caught Framework error\nType: ${error.runtimeType}\nstackTrace: $stack');
+    },
+  );
   runApp(const RackApp());
 }
 
@@ -9,6 +23,11 @@ class RackApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerDelegate: router.routerDelegate,
+      routeInformationParser: router.routeInformationParser,
+      routeInformationProvider: router.routeInformationProvider,
+    );
   }
 }
