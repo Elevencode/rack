@@ -32,6 +32,9 @@ dependencies:
   flutter_bloc: ^8.1.2
   bloc_concurrency: ^0.2.1
 
+  # Localization
+  intl: ^0.17.0
+
   # Other
   google_fonts: ^4.0.4
   sliver_tools: ^0.2.10
@@ -50,72 +53,4 @@ flutter:
 
   uses-material-design: true
 
-
-
-# name: rack_app
-# description: A new Flutter project.
-
-# publish_to: 'none'
-
-
-# version: 1.0.0+1
-
-# environment:
-#   sdk: '>=2.19.4 <3.0.0'
-
-# dependencies:
-#   flutter:
-#     sdk: flutter
-#   flutter_localizations:
-#     sdk: flutter
-
-#   # Generation
-#   freezed_annotation: ^2.2.0
-
-#   # Remote API
-#   dio: ^5.1.2
-#   retrofit: ^4.0.1
-#   json_serializable: ^6.6.2
-#   json_annotation: ^4.8.1
-
-#   # State management
-#   flutter_bloc: ^8.1.2
-#   bloc_concurrency: ^0.2.1
-
-#   # Localization
-#   intl: ^0.17.0
-
-#   # DI
-#   get_it: ^7.6.0
-
-#   # Router
-#   go_router: ^7.0.1
-
-#   # Theme
-#   flutter_svg: ^2.0.5
-#   google_fonts: ^4.0.4
-
-#   # Other
-#   shimmer: ^2.0.0
-#   cached_network_image: ^3.2.3
-
-#   cupertino_icons: ^1.0.2
-
-# dev_dependencies:
-#   flutter_test:
-#     sdk: flutter
-#   flutter_lints: ^2.0.0
-#   build_runner: ^2.3.3
-#   # flutter_gen_runner:
-#   retrofit_generator: ^7.0.1
-#   freezed: <2.3.0
-  
-
-
-# flutter:
-#   uses-material-design: true
-#   generate: true
-
-# flutter_gen:
-#   output: lib/common/gen
 

@@ -15,16 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MovieModel _$MovieModelFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType']) {
-    case 'base':
-      return BaseMovieModel.fromJson(json);
-    case 'premiere':
-      return PremiereMovieModel.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'runtimeType', 'MovieModel',
-          'Invalid union type "${json['runtimeType']}"!');
-  }
+  return _MovieModel.fromJson(json);
 }
 
 /// @nodoc
@@ -34,94 +25,11 @@ mixin _$MovieModel {
   String get type => throw _privateConstructorUsedError;
   int get year => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  PremiereModel get premiere => throw _privateConstructorUsedError;
   String? get shortDescription => throw _privateConstructorUsedError;
   String? get alternativeName => throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)
-        base,
-    required TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)
-        premiere,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)?
-        base,
-    TResult? Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)?
-        premiere,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)?
-        base,
-    TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)?
-        premiere,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BaseMovieModel value) base,
-    required TResult Function(PremiereMovieModel value) premiere,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BaseMovieModel value)? base,
-    TResult? Function(PremiereMovieModel value)? premiere,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BaseMovieModel value)? base,
-    TResult Function(PremiereMovieModel value)? premiere,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  PosterModel? get poster => throw _privateConstructorUsedError;
+
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MovieModelCopyWith<MovieModel> get copyWith =>
@@ -140,8 +48,13 @@ abstract class $MovieModelCopyWith<$Res> {
       String type,
       int year,
       String description,
-      String shortDescription,
-      String? alternativeName});
+      PremiereModel premiere,
+      String? shortDescription,
+      String? alternativeName,
+      PosterModel? poster});
+
+  $PremiereModelCopyWith<$Res> get premiere;
+  $PosterModelCopyWith<$Res>? get poster;
 }
 
 /// @nodoc
@@ -162,8 +75,10 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
     Object? type = null,
     Object? year = null,
     Object? description = null,
-    Object? shortDescription = null,
+    Object? premiere = null,
+    Object? shortDescription = freezed,
     Object? alternativeName = freezed,
+    Object? poster = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -186,370 +101,10 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      shortDescription: null == shortDescription
-          ? _value.shortDescription!
-          : shortDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      alternativeName: freezed == alternativeName
-          ? _value.alternativeName
-          : alternativeName // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$BaseMovieModelCopyWith<$Res>
-    implements $MovieModelCopyWith<$Res> {
-  factory _$$BaseMovieModelCopyWith(
-          _$BaseMovieModel value, $Res Function(_$BaseMovieModel) then) =
-      __$$BaseMovieModelCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      String name,
-      String type,
-      int year,
-      String description,
-      String shortDescription,
-      String? alternativeName});
-}
-
-/// @nodoc
-class __$$BaseMovieModelCopyWithImpl<$Res>
-    extends _$MovieModelCopyWithImpl<$Res, _$BaseMovieModel>
-    implements _$$BaseMovieModelCopyWith<$Res> {
-  __$$BaseMovieModelCopyWithImpl(
-      _$BaseMovieModel _value, $Res Function(_$BaseMovieModel) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? type = null,
-    Object? year = null,
-    Object? description = null,
-    Object? shortDescription = null,
-    Object? alternativeName = freezed,
-  }) {
-    return _then(_$BaseMovieModel(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      year: null == year
-          ? _value.year
-          : year // ignore: cast_nullable_to_non_nullable
-              as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
-      shortDescription: null == shortDescription
-          ? _value.shortDescription
-          : shortDescription // ignore: cast_nullable_to_non_nullable
-              as String,
-      alternativeName: freezed == alternativeName
-          ? _value.alternativeName
-          : alternativeName // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$BaseMovieModel extends BaseMovieModel {
-  const _$BaseMovieModel(
-      {required this.id,
-      required this.name,
-      required this.type,
-      required this.year,
-      required this.description,
-      required this.shortDescription,
-      this.alternativeName,
-      final String? $type})
-      : $type = $type ?? 'base',
-        super._();
-
-  factory _$BaseMovieModel.fromJson(Map<String, dynamic> json) =>
-      _$$BaseMovieModelFromJson(json);
-
-  @override
-  final int id;
-  @override
-  final String name;
-  @override
-  final String type;
-  @override
-  final int year;
-  @override
-  final String description;
-  @override
-  final String shortDescription;
-  @override
-  final String? alternativeName;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'MovieModel.base(id: $id, name: $name, type: $type, year: $year, description: $description, shortDescription: $shortDescription, alternativeName: $alternativeName)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$BaseMovieModel &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.year, year) || other.year == year) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.shortDescription, shortDescription) ||
-                other.shortDescription == shortDescription) &&
-            (identical(other.alternativeName, alternativeName) ||
-                other.alternativeName == alternativeName));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, id, name, type, year,
-      description, shortDescription, alternativeName);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$BaseMovieModelCopyWith<_$BaseMovieModel> get copyWith =>
-      __$$BaseMovieModelCopyWithImpl<_$BaseMovieModel>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)
-        base,
-    required TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)
-        premiere,
-  }) {
-    return base(
-        id, name, type, year, description, shortDescription, alternativeName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)?
-        base,
-    TResult? Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)?
-        premiere,
-  }) {
-    return base?.call(
-        id, name, type, year, description, shortDescription, alternativeName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)?
-        base,
-    TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)?
-        premiere,
-    required TResult orElse(),
-  }) {
-    if (base != null) {
-      return base(
-          id, name, type, year, description, shortDescription, alternativeName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BaseMovieModel value) base,
-    required TResult Function(PremiereMovieModel value) premiere,
-  }) {
-    return base(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BaseMovieModel value)? base,
-    TResult? Function(PremiereMovieModel value)? premiere,
-  }) {
-    return base?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BaseMovieModel value)? base,
-    TResult Function(PremiereMovieModel value)? premiere,
-    required TResult orElse(),
-  }) {
-    if (base != null) {
-      return base(this);
-    }
-    return orElse();
-  }
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$BaseMovieModelToJson(
-      this,
-    );
-  }
-}
-
-abstract class BaseMovieModel extends MovieModel {
-  const factory BaseMovieModel(
-      {required final int id,
-      required final String name,
-      required final String type,
-      required final int year,
-      required final String description,
-      required final String shortDescription,
-      final String? alternativeName}) = _$BaseMovieModel;
-  const BaseMovieModel._() : super._();
-
-  factory BaseMovieModel.fromJson(Map<String, dynamic> json) =
-      _$BaseMovieModel.fromJson;
-
-  @override
-  int get id;
-  @override
-  String get name;
-  @override
-  String get type;
-  @override
-  int get year;
-  @override
-  String get description;
-  @override
-  String get shortDescription;
-  @override
-  String? get alternativeName;
-  @override
-  @JsonKey(ignore: true)
-  _$$BaseMovieModelCopyWith<_$BaseMovieModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$PremiereMovieModelCopyWith<$Res>
-    implements $MovieModelCopyWith<$Res> {
-  factory _$$PremiereMovieModelCopyWith(_$PremiereMovieModel value,
-          $Res Function(_$PremiereMovieModel) then) =
-      __$$PremiereMovieModelCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {int id,
-      String name,
-      String type,
-      int year,
-      String description,
-      String? shortDescription,
-      String? alternativeName});
-}
-
-/// @nodoc
-class __$$PremiereMovieModelCopyWithImpl<$Res>
-    extends _$MovieModelCopyWithImpl<$Res, _$PremiereMovieModel>
-    implements _$$PremiereMovieModelCopyWith<$Res> {
-  __$$PremiereMovieModelCopyWithImpl(
-      _$PremiereMovieModel _value, $Res Function(_$PremiereMovieModel) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? type = null,
-    Object? year = null,
-    Object? description = null,
-    Object? shortDescription = freezed,
-    Object? alternativeName = freezed,
-  }) {
-    return _then(_$PremiereMovieModel(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      year: null == year
-          ? _value.year
-          : year // ignore: cast_nullable_to_non_nullable
-              as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
+      premiere: null == premiere
+          ? _value.premiere
+          : premiere // ignore: cast_nullable_to_non_nullable
+              as PremiereModel,
       shortDescription: freezed == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -558,27 +113,138 @@ class __$$PremiereMovieModelCopyWithImpl<$Res>
           ? _value.alternativeName
           : alternativeName // ignore: cast_nullable_to_non_nullable
               as String?,
+      poster: freezed == poster
+          ? _value.poster
+          : poster // ignore: cast_nullable_to_non_nullable
+              as PosterModel?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PremiereModelCopyWith<$Res> get premiere {
+    return $PremiereModelCopyWith<$Res>(_value.premiere, (value) {
+      return _then(_value.copyWith(premiere: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PosterModelCopyWith<$Res>? get poster {
+    if (_value.poster == null) {
+      return null;
+    }
+
+    return $PosterModelCopyWith<$Res>(_value.poster!, (value) {
+      return _then(_value.copyWith(poster: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_MovieModelCopyWith<$Res>
+    implements $MovieModelCopyWith<$Res> {
+  factory _$$_MovieModelCopyWith(
+          _$_MovieModel value, $Res Function(_$_MovieModel) then) =
+      __$$_MovieModelCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {int id,
+      String name,
+      String type,
+      int year,
+      String description,
+      PremiereModel premiere,
+      String? shortDescription,
+      String? alternativeName,
+      PosterModel? poster});
+
+  @override
+  $PremiereModelCopyWith<$Res> get premiere;
+  @override
+  $PosterModelCopyWith<$Res>? get poster;
+}
+
+/// @nodoc
+class __$$_MovieModelCopyWithImpl<$Res>
+    extends _$MovieModelCopyWithImpl<$Res, _$_MovieModel>
+    implements _$$_MovieModelCopyWith<$Res> {
+  __$$_MovieModelCopyWithImpl(
+      _$_MovieModel _value, $Res Function(_$_MovieModel) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? type = null,
+    Object? year = null,
+    Object? description = null,
+    Object? premiere = null,
+    Object? shortDescription = freezed,
+    Object? alternativeName = freezed,
+    Object? poster = freezed,
+  }) {
+    return _then(_$_MovieModel(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      type: null == type
+          ? _value.type
+          : type // ignore: cast_nullable_to_non_nullable
+              as String,
+      year: null == year
+          ? _value.year
+          : year // ignore: cast_nullable_to_non_nullable
+              as int,
+      description: null == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      premiere: null == premiere
+          ? _value.premiere
+          : premiere // ignore: cast_nullable_to_non_nullable
+              as PremiereModel,
+      shortDescription: freezed == shortDescription
+          ? _value.shortDescription
+          : shortDescription // ignore: cast_nullable_to_non_nullable
+              as String?,
+      alternativeName: freezed == alternativeName
+          ? _value.alternativeName
+          : alternativeName // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poster: freezed == poster
+          ? _value.poster
+          : poster // ignore: cast_nullable_to_non_nullable
+              as PosterModel?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PremiereMovieModel extends PremiereMovieModel {
-  const _$PremiereMovieModel(
+class _$_MovieModel extends _MovieModel {
+  const _$_MovieModel(
       {required this.id,
       required this.name,
       required this.type,
       required this.year,
       required this.description,
+      required this.premiere,
       this.shortDescription,
       this.alternativeName,
-      final String? $type})
-      : $type = $type ?? 'premiere',
-        super._();
+      this.poster})
+      : super._();
 
-  factory _$PremiereMovieModel.fromJson(Map<String, dynamic> json) =>
-      _$$PremiereMovieModelFromJson(json);
+  factory _$_MovieModel.fromJson(Map<String, dynamic> json) =>
+      _$$_MovieModelFromJson(json);
 
   @override
   final int id;
@@ -591,181 +257,73 @@ class _$PremiereMovieModel extends PremiereMovieModel {
   @override
   final String description;
   @override
+  final PremiereModel premiere;
+  @override
   final String? shortDescription;
   @override
   final String? alternativeName;
-
-  @JsonKey(name: 'runtimeType')
-  final String $type;
+  @override
+  final PosterModel? poster;
 
   @override
   String toString() {
-    return 'MovieModel.premiere(id: $id, name: $name, type: $type, year: $year, description: $description, shortDescription: $shortDescription, alternativeName: $alternativeName)';
+    return 'MovieModel(id: $id, name: $name, type: $type, year: $year, description: $description, premiere: $premiere, shortDescription: $shortDescription, alternativeName: $alternativeName, poster: $poster)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PremiereMovieModel &&
+            other is _$_MovieModel &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.year, year) || other.year == year) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.premiere, premiere) ||
+                other.premiere == premiere) &&
             (identical(other.shortDescription, shortDescription) ||
                 other.shortDescription == shortDescription) &&
             (identical(other.alternativeName, alternativeName) ||
-                other.alternativeName == alternativeName));
+                other.alternativeName == alternativeName) &&
+            (identical(other.poster, poster) || other.poster == poster));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, type, year,
-      description, shortDescription, alternativeName);
+      description, premiere, shortDescription, alternativeName, poster);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PremiereMovieModelCopyWith<_$PremiereMovieModel> get copyWith =>
-      __$$PremiereMovieModelCopyWithImpl<_$PremiereMovieModel>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)
-        base,
-    required TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)
-        premiere,
-  }) {
-    return premiere(
-        id, name, type, year, description, shortDescription, alternativeName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)?
-        base,
-    TResult? Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)?
-        premiere,
-  }) {
-    return premiere?.call(
-        id, name, type, year, description, shortDescription, alternativeName);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String shortDescription,
-            String? alternativeName)?
-        base,
-    TResult Function(
-            int id,
-            String name,
-            String type,
-            int year,
-            String description,
-            String? shortDescription,
-            String? alternativeName)?
-        premiere,
-    required TResult orElse(),
-  }) {
-    if (premiere != null) {
-      return premiere(
-          id, name, type, year, description, shortDescription, alternativeName);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(BaseMovieModel value) base,
-    required TResult Function(PremiereMovieModel value) premiere,
-  }) {
-    return premiere(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(BaseMovieModel value)? base,
-    TResult? Function(PremiereMovieModel value)? premiere,
-  }) {
-    return premiere?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(BaseMovieModel value)? base,
-    TResult Function(PremiereMovieModel value)? premiere,
-    required TResult orElse(),
-  }) {
-    if (premiere != null) {
-      return premiere(this);
-    }
-    return orElse();
-  }
+  _$$_MovieModelCopyWith<_$_MovieModel> get copyWith =>
+      __$$_MovieModelCopyWithImpl<_$_MovieModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PremiereMovieModelToJson(
+    return _$$_MovieModelToJson(
       this,
     );
   }
 }
 
-abstract class PremiereMovieModel extends MovieModel {
-  const factory PremiereMovieModel(
+abstract class _MovieModel extends MovieModel {
+  const factory _MovieModel(
       {required final int id,
       required final String name,
       required final String type,
       required final int year,
       required final String description,
+      required final PremiereModel premiere,
       final String? shortDescription,
-      final String? alternativeName}) = _$PremiereMovieModel;
-  const PremiereMovieModel._() : super._();
+      final String? alternativeName,
+      final PosterModel? poster}) = _$_MovieModel;
+  const _MovieModel._() : super._();
 
-  factory PremiereMovieModel.fromJson(Map<String, dynamic> json) =
-      _$PremiereMovieModel.fromJson;
+  factory _MovieModel.fromJson(Map<String, dynamic> json) =
+      _$_MovieModel.fromJson;
 
   @override
   int get id;
@@ -778,11 +336,15 @@ abstract class PremiereMovieModel extends MovieModel {
   @override
   String get description;
   @override
+  PremiereModel get premiere;
+  @override
   String? get shortDescription;
   @override
   String? get alternativeName;
   @override
+  PosterModel? get poster;
+  @override
   @JsonKey(ignore: true)
-  _$$PremiereMovieModelCopyWith<_$PremiereMovieModel> get copyWith =>
+  _$$_MovieModelCopyWith<_$_MovieModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

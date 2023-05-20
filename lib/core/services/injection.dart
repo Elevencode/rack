@@ -4,11 +4,15 @@ import 'package:rack_app/config/app_config.dart';
 import 'package:rack_app/feature/data/api/movies_api/movies_api.dart';
 import 'package:rack_app/feature/data/repositories/movies_repository.dart';
 import 'package:rack_app/feature/domain/repositories/i_movies_repository.dart';
+import 'package:rack_app/feature/presentation/bloc/home/home_bloc.dart';
 
 final GetIt sl = GetIt.instance;
 
 void inject() {
-  // REPOS.
+  //BLOC.
+  sl.registerLazySingleton(() => HomeBloc(sl()));
+
+  // REPO.
   sl.registerLazySingleton<IMovieRepository>(() => MoviesRepository(sl()));
 
   // API.
@@ -27,4 +31,6 @@ void inject() {
       ),
     ),
   );
+
+  sl.registerLazySingleton<Dio>(() => sl<Dio>(instanceName: 'initial'));
 }

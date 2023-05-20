@@ -17,4 +17,10 @@ abstract class MoviesApi {
 
   @GET('v1.3/movie')
   Future<MovieRequestModel> getMovie(@Query('id') String query);
+
+  @GET('v1.3/movie')
+  Future<MovieRequestModel> getPremieres(@Queries() Map<String, dynamic> queries);
+
+  @GET('v1.3/movie')
+  Future<MovieRequestModel> getDigitalReleases(@Queries() Map<String, dynamic> queries);
 }

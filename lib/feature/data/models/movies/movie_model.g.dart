@@ -6,51 +6,31 @@ part of 'movie_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BaseMovieModel _$$BaseMovieModelFromJson(Map<String, dynamic> json) =>
-    _$BaseMovieModel(
+_$_MovieModel _$$_MovieModelFromJson(Map<String, dynamic> json) =>
+    _$_MovieModel(
       id: json['id'] as int,
       name: json['name'] as String,
       type: json['type'] as String,
       year: json['year'] as int,
       description: json['description'] as String,
-      shortDescription: json['shortDescription'] as String,
-      alternativeName: json['alternativeName'] as String?,
-      $type: json['runtimeType'] as String?,
-    );
-
-Map<String, dynamic> _$$BaseMovieModelToJson(_$BaseMovieModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'type': instance.type,
-      'year': instance.year,
-      'description': instance.description,
-      'shortDescription': instance.shortDescription,
-      'alternativeName': instance.alternativeName,
-      'runtimeType': instance.$type,
-    };
-
-_$PremiereMovieModel _$$PremiereMovieModelFromJson(Map<String, dynamic> json) =>
-    _$PremiereMovieModel(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      type: json['type'] as String,
-      year: json['year'] as int,
-      description: json['description'] as String,
+      premiere:
+          PremiereModel.fromJson(json['premiere'] as Map<String, dynamic>),
       shortDescription: json['shortDescription'] as String?,
       alternativeName: json['alternativeName'] as String?,
-      $type: json['runtimeType'] as String?,
+      poster: json['poster'] == null
+          ? null
+          : PosterModel.fromJson(json['poster'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$PremiereMovieModelToJson(
-        _$PremiereMovieModel instance) =>
+Map<String, dynamic> _$$_MovieModelToJson(_$_MovieModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'type': instance.type,
       'year': instance.year,
       'description': instance.description,
+      'premiere': instance.premiere,
       'shortDescription': instance.shortDescription,
       'alternativeName': instance.alternativeName,
-      'runtimeType': instance.$type,
+      'poster': instance.poster,
     };

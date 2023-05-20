@@ -169,7 +169,7 @@ mixin _$HomeState {
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
     required TResult Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)
         loadSuccess,
     required TResult Function(String errorText) loadFailure,
   }) =>
@@ -178,7 +178,7 @@ mixin _$HomeState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
     TResult? Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)?
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)?
         loadSuccess,
     TResult? Function(String errorText)? loadFailure,
   }) =>
@@ -187,7 +187,7 @@ mixin _$HomeState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
     TResult Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)?
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)?
         loadSuccess,
     TResult Function(String errorText)? loadFailure,
     required TResult orElse(),
@@ -274,7 +274,7 @@ class _$_HomeLoadInprogress implements _HomeLoadInprogress {
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
     required TResult Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)
         loadSuccess,
     required TResult Function(String errorText) loadFailure,
   }) {
@@ -286,7 +286,7 @@ class _$_HomeLoadInprogress implements _HomeLoadInprogress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
     TResult? Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)?
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)?
         loadSuccess,
     TResult? Function(String errorText)? loadFailure,
   }) {
@@ -298,7 +298,7 @@ class _$_HomeLoadInprogress implements _HomeLoadInprogress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
     TResult Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)?
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)?
         loadSuccess,
     TResult Function(String errorText)? loadFailure,
     required TResult orElse(),
@@ -354,7 +354,7 @@ abstract class _$$_HomeLoadSuccessCopyWith<$Res> {
           _$_HomeLoadSuccess value, $Res Function(_$_HomeLoadSuccess) then) =
       __$$_HomeLoadSuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<MovieModel> premieres, List<MovieModel> digitalReliases});
+  $Res call({List<MovieModel> premieres, List<MovieModel> digitalReleases});
 }
 
 /// @nodoc
@@ -369,16 +369,16 @@ class __$$_HomeLoadSuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? premieres = null,
-    Object? digitalReliases = null,
+    Object? digitalReleases = null,
   }) {
     return _then(_$_HomeLoadSuccess(
       premieres: null == premieres
           ? _value._premieres
           : premieres // ignore: cast_nullable_to_non_nullable
               as List<MovieModel>,
-      digitalReliases: null == digitalReliases
-          ? _value._digitalReliases
-          : digitalReliases // ignore: cast_nullable_to_non_nullable
+      digitalReleases: null == digitalReleases
+          ? _value._digitalReleases
+          : digitalReleases // ignore: cast_nullable_to_non_nullable
               as List<MovieModel>,
     ));
   }
@@ -389,9 +389,9 @@ class __$$_HomeLoadSuccessCopyWithImpl<$Res>
 class _$_HomeLoadSuccess implements _HomeLoadSuccess {
   const _$_HomeLoadSuccess(
       {required final List<MovieModel> premieres,
-      required final List<MovieModel> digitalReliases})
+      required final List<MovieModel> digitalReleases})
       : _premieres = premieres,
-        _digitalReliases = digitalReliases;
+        _digitalReleases = digitalReleases;
 
   final List<MovieModel> _premieres;
   @override
@@ -401,17 +401,17 @@ class _$_HomeLoadSuccess implements _HomeLoadSuccess {
     return EqualUnmodifiableListView(_premieres);
   }
 
-  final List<MovieModel> _digitalReliases;
+  final List<MovieModel> _digitalReleases;
   @override
-  List<MovieModel> get digitalReliases {
-    if (_digitalReliases is EqualUnmodifiableListView) return _digitalReliases;
+  List<MovieModel> get digitalReleases {
+    if (_digitalReleases is EqualUnmodifiableListView) return _digitalReleases;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_digitalReliases);
+    return EqualUnmodifiableListView(_digitalReleases);
   }
 
   @override
   String toString() {
-    return 'HomeState.loadSuccess(premieres: $premieres, digitalReliases: $digitalReliases)';
+    return 'HomeState.loadSuccess(premieres: $premieres, digitalReleases: $digitalReleases)';
   }
 
   @override
@@ -422,14 +422,14 @@ class _$_HomeLoadSuccess implements _HomeLoadSuccess {
             const DeepCollectionEquality()
                 .equals(other._premieres, _premieres) &&
             const DeepCollectionEquality()
-                .equals(other._digitalReliases, _digitalReliases));
+                .equals(other._digitalReleases, _digitalReleases));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_premieres),
-      const DeepCollectionEquality().hash(_digitalReliases));
+      const DeepCollectionEquality().hash(_digitalReleases));
 
   @JsonKey(ignore: true)
   @override
@@ -442,11 +442,11 @@ class _$_HomeLoadSuccess implements _HomeLoadSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
     required TResult Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)
         loadSuccess,
     required TResult Function(String errorText) loadFailure,
   }) {
-    return loadSuccess(premieres, digitalReliases);
+    return loadSuccess(premieres, digitalReleases);
   }
 
   @override
@@ -454,11 +454,11 @@ class _$_HomeLoadSuccess implements _HomeLoadSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
     TResult? Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)?
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)?
         loadSuccess,
     TResult? Function(String errorText)? loadFailure,
   }) {
-    return loadSuccess?.call(premieres, digitalReliases);
+    return loadSuccess?.call(premieres, digitalReleases);
   }
 
   @override
@@ -466,13 +466,13 @@ class _$_HomeLoadSuccess implements _HomeLoadSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
     TResult Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)?
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)?
         loadSuccess,
     TResult Function(String errorText)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess(premieres, digitalReliases);
+      return loadSuccess(premieres, digitalReleases);
     }
     return orElse();
   }
@@ -515,10 +515,10 @@ class _$_HomeLoadSuccess implements _HomeLoadSuccess {
 abstract class _HomeLoadSuccess implements HomeState {
   const factory _HomeLoadSuccess(
       {required final List<MovieModel> premieres,
-      required final List<MovieModel> digitalReliases}) = _$_HomeLoadSuccess;
+      required final List<MovieModel> digitalReleases}) = _$_HomeLoadSuccess;
 
   List<MovieModel> get premieres;
-  List<MovieModel> get digitalReliases;
+  List<MovieModel> get digitalReleases;
   @JsonKey(ignore: true)
   _$$_HomeLoadSuccessCopyWith<_$_HomeLoadSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -591,7 +591,7 @@ class _$_HomeLoadFailure implements _HomeLoadFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
     required TResult Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)
         loadSuccess,
     required TResult Function(String errorText) loadFailure,
   }) {
@@ -603,7 +603,7 @@ class _$_HomeLoadFailure implements _HomeLoadFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
     TResult? Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)?
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)?
         loadSuccess,
     TResult? Function(String errorText)? loadFailure,
   }) {
@@ -615,7 +615,7 @@ class _$_HomeLoadFailure implements _HomeLoadFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
     TResult Function(
-            List<MovieModel> premieres, List<MovieModel> digitalReliases)?
+            List<MovieModel> premieres, List<MovieModel> digitalReleases)?
         loadSuccess,
     TResult Function(String errorText)? loadFailure,
     required TResult orElse(),

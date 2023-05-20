@@ -25,4 +25,50 @@ class MoviesRepository implements IMovieRepository {
     // TODO: implement fetchMovies
     throw UnimplementedError();
   }
+
+  @override
+  Future<DataResult<List<MovieModel>>> fetchPremieres(String dateRange) async {
+    try {
+      final query = {
+        'selectFields': SelectFields.premiere,
+        'premiere.russia': dateRange,
+        'type': 'movie',
+      };
+      final response = await _api.getPremieres(query);
+
+      return DataResult.success(data: response.docs);
+    } on Exception catch (e, st) {
+      return DataResult.failure(error: HandleException.getException(e, st));
+    }
+  }
+
+  @override
+  Future<DataResult<List<MovieModel>>> fetchDigitalReleases(String dateRange) async {
+    try {
+      final query = {
+        'selectFields': SelectFields.premiere,
+        'premiere.digital': dateRange,
+        'type': 'tv-series',
+      };
+      final response = await _api.getDigitalReleases(query);
+
+      return DataResult.success(data: response.docs);
+    } on Exception catch (e, st) {
+      return DataResult.failure(error: HandleException.getException(e, st));
+    }
+  }
+}
+
+abstract class SelectFields {
+  static List<String> get premiere => [
+        'id',
+        'name',
+        'type',
+        'year',
+        'description',
+        'premiere',
+        'shortDescription',
+        'alternativeName',
+        'poster',
+      ];
 }
