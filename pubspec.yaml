@@ -19,20 +19,30 @@ dependencies:
   get_it: ^7.6.0
 
   # Remote API
-  dio: ^5.1.2
-  retrofit: ^4.0.1
+  dio: ^4.0.6
+  retrofit: ^3.0.1+1
   json_serializable: ^6.6.2
   json_annotation: ^4.8.1
+
+  # Codegen
+  freezed: ^2.2.0
+  freezed_annotation: ^2.2.0
 
   # State management
   flutter_bloc: ^8.1.2
   bloc_concurrency: ^0.2.1
+
+  # Other
+  google_fonts: ^4.0.4
+  sliver_tools: ^0.2.10
 
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  retrofit_generator: ^4.0.3
 
   flutter_lints: ^2.0.0
 

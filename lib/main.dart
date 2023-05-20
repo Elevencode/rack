@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:rack_app/config/theme/theme.dart';
 import 'package:rack_app/core/services/injection.dart' as di;
 import 'package:rack_app/feature/presentation/router/router.dart';
 
@@ -28,6 +29,9 @@ class RackApp extends StatelessWidget {
       routerDelegate: router.routerDelegate,
       routeInformationParser: router.routeInformationParser,
       routeInformationProvider: router.routeInformationProvider,
+      theme: ThemeData.light().copyWith(
+        extensions: <ThemeExtension<CustomTheme>>[AppTheme.light],
+      ),
     );
   }
 }
