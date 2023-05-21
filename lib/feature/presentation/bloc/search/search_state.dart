@@ -5,7 +5,7 @@ class SearchState with _$SearchState {
   const factory SearchState.loadInProgress(String keyword) = _SearchLoadInProgress;
 
   const factory SearchState.loadSuccess({
-    required List<SearchResultModel> searchResult,
+    required List<MovieModel> searchResult,
     required String keyword,
   }) = _SearchLoadSuccess;
 

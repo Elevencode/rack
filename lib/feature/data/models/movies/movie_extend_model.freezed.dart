@@ -32,6 +32,7 @@ mixin _$MovieExtendModel {
   RatingModel get rating => throw _privateConstructorUsedError;
   int get movieLength => throw _privateConstructorUsedError;
   int get ageRating => throw _privateConstructorUsedError;
+  List<CountryModel> get countries => throw _privateConstructorUsedError;
   List<FactModel>? get facts => throw _privateConstructorUsedError;
   List<SimilarMovieModel>? get similarMovies =>
       throw _privateConstructorUsedError;
@@ -62,6 +63,7 @@ abstract class $MovieExtendModelCopyWith<$Res> {
       RatingModel rating,
       int movieLength,
       int ageRating,
+      List<CountryModel> countries,
       List<FactModel>? facts,
       List<SimilarMovieModel>? similarMovies,
       String? alternativeName});
@@ -96,6 +98,7 @@ class _$MovieExtendModelCopyWithImpl<$Res, $Val extends MovieExtendModel>
     Object? rating = null,
     Object? movieLength = null,
     Object? ageRating = null,
+    Object? countries = null,
     Object? facts = freezed,
     Object? similarMovies = freezed,
     Object? alternativeName = freezed,
@@ -149,6 +152,10 @@ class _$MovieExtendModelCopyWithImpl<$Res, $Val extends MovieExtendModel>
           ? _value.ageRating
           : ageRating // ignore: cast_nullable_to_non_nullable
               as int,
+      countries: null == countries
+          ? _value.countries
+          : countries // ignore: cast_nullable_to_non_nullable
+              as List<CountryModel>,
       facts: freezed == facts
           ? _value.facts
           : facts // ignore: cast_nullable_to_non_nullable
@@ -210,6 +217,7 @@ abstract class _$$_MovieExtendModelCopyWith<$Res>
       RatingModel rating,
       int movieLength,
       int ageRating,
+      List<CountryModel> countries,
       List<FactModel>? facts,
       List<SimilarMovieModel>? similarMovies,
       String? alternativeName});
@@ -245,6 +253,7 @@ class __$$_MovieExtendModelCopyWithImpl<$Res>
     Object? rating = null,
     Object? movieLength = null,
     Object? ageRating = null,
+    Object? countries = null,
     Object? facts = freezed,
     Object? similarMovies = freezed,
     Object? alternativeName = freezed,
@@ -298,6 +307,10 @@ class __$$_MovieExtendModelCopyWithImpl<$Res>
           ? _value.ageRating
           : ageRating // ignore: cast_nullable_to_non_nullable
               as int,
+      countries: null == countries
+          ? _value._countries
+          : countries // ignore: cast_nullable_to_non_nullable
+              as List<CountryModel>,
       facts: freezed == facts
           ? _value._facts
           : facts // ignore: cast_nullable_to_non_nullable
@@ -330,11 +343,13 @@ class _$_MovieExtendModel extends _MovieExtendModel {
       required this.rating,
       required this.movieLength,
       required this.ageRating,
+      required final List<CountryModel> countries,
       final List<FactModel>? facts,
       final List<SimilarMovieModel>? similarMovies,
       this.alternativeName})
       : _genres = genres,
         _persons = persons,
+        _countries = countries,
         _facts = facts,
         _similarMovies = similarMovies,
         super._();
@@ -378,6 +393,14 @@ class _$_MovieExtendModel extends _MovieExtendModel {
   final int movieLength;
   @override
   final int ageRating;
+  final List<CountryModel> _countries;
+  @override
+  List<CountryModel> get countries {
+    if (_countries is EqualUnmodifiableListView) return _countries;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_countries);
+  }
+
   final List<FactModel>? _facts;
   @override
   List<FactModel>? get facts {
@@ -403,7 +426,7 @@ class _$_MovieExtendModel extends _MovieExtendModel {
 
   @override
   String toString() {
-    return 'MovieExtendModel(id: $id, name: $name, type: $type, year: $year, premiere: $premiere, description: $description, poster: $poster, genres: $genres, persons: $persons, rating: $rating, movieLength: $movieLength, ageRating: $ageRating, facts: $facts, similarMovies: $similarMovies, alternativeName: $alternativeName)';
+    return 'MovieExtendModel(id: $id, name: $name, type: $type, year: $year, premiere: $premiere, description: $description, poster: $poster, genres: $genres, persons: $persons, rating: $rating, movieLength: $movieLength, ageRating: $ageRating, countries: $countries, facts: $facts, similarMovies: $similarMovies, alternativeName: $alternativeName)';
   }
 
   @override
@@ -427,6 +450,8 @@ class _$_MovieExtendModel extends _MovieExtendModel {
                 other.movieLength == movieLength) &&
             (identical(other.ageRating, ageRating) ||
                 other.ageRating == ageRating) &&
+            const DeepCollectionEquality()
+                .equals(other._countries, _countries) &&
             const DeepCollectionEquality().equals(other._facts, _facts) &&
             const DeepCollectionEquality()
                 .equals(other._similarMovies, _similarMovies) &&
@@ -450,6 +475,7 @@ class _$_MovieExtendModel extends _MovieExtendModel {
       rating,
       movieLength,
       ageRating,
+      const DeepCollectionEquality().hash(_countries),
       const DeepCollectionEquality().hash(_facts),
       const DeepCollectionEquality().hash(_similarMovies),
       alternativeName);
@@ -482,6 +508,7 @@ abstract class _MovieExtendModel extends MovieExtendModel {
       required final RatingModel rating,
       required final int movieLength,
       required final int ageRating,
+      required final List<CountryModel> countries,
       final List<FactModel>? facts,
       final List<SimilarMovieModel>? similarMovies,
       final String? alternativeName}) = _$_MovieExtendModel;
@@ -514,6 +541,8 @@ abstract class _MovieExtendModel extends MovieExtendModel {
   int get movieLength;
   @override
   int get ageRating;
+  @override
+  List<CountryModel> get countries;
   @override
   List<FactModel>? get facts;
   @override

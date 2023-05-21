@@ -14,7 +14,7 @@ class MovieModel with _$MovieModel {
     required String name,
     required String type,
     required int year,
-    required PremiereModel premiere,
+     PremiereModel? premiere,
     String? description,
     String? shortDescription,
     String? alternativeName,

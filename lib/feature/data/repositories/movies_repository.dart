@@ -73,6 +73,21 @@ class MoviesRepository implements IMovieRepository {
       return DataResult.failure(error: HandleException.getException(e, st));
     }
   }
+
+  @override
+  Future<DataResult<List<MovieModel>>> fetchSearchResults(String searchValue) async {
+    try {
+      final query = {
+        'selectFields': SelectFields.base,
+        'name': searchValue,
+      };
+      final response = await _api.getDigitalReleases(query);
+
+      return DataResult.success(data: response.docs);
+    } on Exception catch (e, st) {
+      return DataResult.failure(error: HandleException.getException(e, st));
+    }
+  }
 }
 
 abstract class SelectFields {
@@ -103,5 +118,6 @@ abstract class SelectFields {
         'ageRating',
         'facts',
         'similarMovies',
+        'countries'
       ];
 }

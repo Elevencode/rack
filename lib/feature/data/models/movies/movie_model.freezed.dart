@@ -24,7 +24,7 @@ mixin _$MovieModel {
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   int get year => throw _privateConstructorUsedError;
-  PremiereModel get premiere => throw _privateConstructorUsedError;
+  PremiereModel? get premiere => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get shortDescription => throw _privateConstructorUsedError;
   String? get alternativeName => throw _privateConstructorUsedError;
@@ -48,14 +48,14 @@ abstract class $MovieModelCopyWith<$Res> {
       String name,
       String type,
       int year,
-      PremiereModel premiere,
+      PremiereModel? premiere,
       String? description,
       String? shortDescription,
       String? alternativeName,
       PosterModel? poster,
       LogoModel? logo});
 
-  $PremiereModelCopyWith<$Res> get premiere;
+  $PremiereModelCopyWith<$Res>? get premiere;
   $PosterModelCopyWith<$Res>? get poster;
   $LogoModelCopyWith<$Res>? get logo;
 }
@@ -77,7 +77,7 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
     Object? name = null,
     Object? type = null,
     Object? year = null,
-    Object? premiere = null,
+    Object? premiere = freezed,
     Object? description = freezed,
     Object? shortDescription = freezed,
     Object? alternativeName = freezed,
@@ -101,10 +101,10 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
               as int,
-      premiere: null == premiere
+      premiere: freezed == premiere
           ? _value.premiere
           : premiere // ignore: cast_nullable_to_non_nullable
-              as PremiereModel,
+              as PremiereModel?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -130,8 +130,12 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $PremiereModelCopyWith<$Res> get premiere {
-    return $PremiereModelCopyWith<$Res>(_value.premiere, (value) {
+  $PremiereModelCopyWith<$Res>? get premiere {
+    if (_value.premiere == null) {
+      return null;
+    }
+
+    return $PremiereModelCopyWith<$Res>(_value.premiere!, (value) {
       return _then(_value.copyWith(premiere: value) as $Val);
     });
   }
@@ -174,7 +178,7 @@ abstract class _$$_MovieModelCopyWith<$Res>
       String name,
       String type,
       int year,
-      PremiereModel premiere,
+      PremiereModel? premiere,
       String? description,
       String? shortDescription,
       String? alternativeName,
@@ -182,7 +186,7 @@ abstract class _$$_MovieModelCopyWith<$Res>
       LogoModel? logo});
 
   @override
-  $PremiereModelCopyWith<$Res> get premiere;
+  $PremiereModelCopyWith<$Res>? get premiere;
   @override
   $PosterModelCopyWith<$Res>? get poster;
   @override
@@ -204,7 +208,7 @@ class __$$_MovieModelCopyWithImpl<$Res>
     Object? name = null,
     Object? type = null,
     Object? year = null,
-    Object? premiere = null,
+    Object? premiere = freezed,
     Object? description = freezed,
     Object? shortDescription = freezed,
     Object? alternativeName = freezed,
@@ -228,10 +232,10 @@ class __$$_MovieModelCopyWithImpl<$Res>
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
               as int,
-      premiere: null == premiere
+      premiere: freezed == premiere
           ? _value.premiere
           : premiere // ignore: cast_nullable_to_non_nullable
-              as PremiereModel,
+              as PremiereModel?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -264,7 +268,7 @@ class _$_MovieModel extends _MovieModel {
       required this.name,
       required this.type,
       required this.year,
-      required this.premiere,
+      this.premiere,
       this.description,
       this.shortDescription,
       this.alternativeName,
@@ -284,7 +288,7 @@ class _$_MovieModel extends _MovieModel {
   @override
   final int year;
   @override
-  final PremiereModel premiere;
+  final PremiereModel? premiere;
   @override
   final String? description;
   @override
@@ -347,7 +351,7 @@ abstract class _MovieModel extends MovieModel {
       required final String name,
       required final String type,
       required final int year,
-      required final PremiereModel premiere,
+      final PremiereModel? premiere,
       final String? description,
       final String? shortDescription,
       final String? alternativeName,
@@ -367,7 +371,7 @@ abstract class _MovieModel extends MovieModel {
   @override
   int get year;
   @override
-  PremiereModel get premiere;
+  PremiereModel? get premiere;
   @override
   String? get description;
   @override

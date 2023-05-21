@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rack_app/config/utils/layout.dart';
 import 'package:rack_app/feature/data/models/movies/movie_model.dart';
+import 'package:rack_app/feature/presentation/bloc/movie/movie_bloc.dart';
 import 'package:rack_app/feature/presentation/router/route_names.dart';
 
 class HomeSection extends StatelessWidget {
@@ -37,7 +39,11 @@ class HomeSection extends StatelessWidget {
                   const SizedBox(width: 8),
                   ...movies.map(
                     (movie) => GestureDetector(
-                      onTap: () => context.pushNamed(RouteNames.movie, extra: movie.id, pathParameters: {'id': '${movie.id}'}),
+                      onTap: () {
+                        context
+                          ..read<MovieBloc>().add(MovieEvent.fetched(movie.id))
+                          ..pushNamed(RouteNames.movie, extra: movie.id, pathParameters: {'id': '${movie.id}'});
+                      },
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
                         child: Container(
@@ -58,7 +64,7 @@ class HomeSection extends StatelessWidget {
                                         // scale: 1,
                                       ),
                                     ),
-                                    if (movie.premiere.russia != null)
+                                    if (movie.premiere?.russia != null)
                                       Positioned(
                                         top: 10,
                                         right: 10,
@@ -69,7 +75,7 @@ class HomeSection extends StatelessWidget {
                                               color: layout.theme.primary, borderRadius: BorderRadius.circular(8)),
                                           child: Center(
                                             child: Text(
-                                              _getPremiereDay(context, movie.premiere.russia!),
+                                              _getPremiereDay(context, movie.premiere!.russia!),
                                               style: layout.fonts.styleB12.copyWith(color: layout.theme.white),
                                             ),
                                           ),

@@ -38,6 +38,7 @@ dependencies:
   # Other
   google_fonts: ^4.0.4
   sliver_tools: ^0.2.10
+  shimmer: ^2.0.0
 
   cupertino_icons: ^1.0.2
 

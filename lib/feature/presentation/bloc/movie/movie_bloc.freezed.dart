@@ -224,21 +224,24 @@ mixin _$MovieState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(MovieExtendModel movie, List<ImageModel> images)
+        loadSuccess,
     required TResult Function(String errorText) loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function()? loadSuccess,
+    TResult? Function(MovieExtendModel movie, List<ImageModel> images)?
+        loadSuccess,
     TResult? Function(String errorText)? loadFailure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(MovieExtendModel movie, List<ImageModel> images)?
+        loadSuccess,
     TResult Function(String errorText)? loadFailure,
     required TResult orElse(),
   }) =>
@@ -324,7 +327,8 @@ class _$_MovieLoadInProgress implements _MovieLoadInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(MovieExtendModel movie, List<ImageModel> images)
+        loadSuccess,
     required TResult Function(String errorText) loadFailure,
   }) {
     return loadInProgress();
@@ -334,7 +338,8 @@ class _$_MovieLoadInProgress implements _MovieLoadInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function()? loadSuccess,
+    TResult? Function(MovieExtendModel movie, List<ImageModel> images)?
+        loadSuccess,
     TResult? Function(String errorText)? loadFailure,
   }) {
     return loadInProgress?.call();
@@ -344,7 +349,8 @@ class _$_MovieLoadInProgress implements _MovieLoadInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(MovieExtendModel movie, List<ImageModel> images)?
+        loadSuccess,
     TResult Function(String errorText)? loadFailure,
     required TResult orElse(),
   }) {
@@ -398,6 +404,10 @@ abstract class _$$_MovieLoadSuccessCopyWith<$Res> {
   factory _$$_MovieLoadSuccessCopyWith(
           _$_MovieLoadSuccess value, $Res Function(_$_MovieLoadSuccess) then) =
       __$$_MovieLoadSuccessCopyWithImpl<$Res>;
+  @useResult
+  $Res call({MovieExtendModel movie, List<ImageModel> images});
+
+  $MovieExtendModelCopyWith<$Res> get movie;
 }
 
 /// @nodoc
@@ -407,57 +417,108 @@ class __$$_MovieLoadSuccessCopyWithImpl<$Res>
   __$$_MovieLoadSuccessCopyWithImpl(
       _$_MovieLoadSuccess _value, $Res Function(_$_MovieLoadSuccess) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? movie = null,
+    Object? images = null,
+  }) {
+    return _then(_$_MovieLoadSuccess(
+      movie: null == movie
+          ? _value.movie
+          : movie // ignore: cast_nullable_to_non_nullable
+              as MovieExtendModel,
+      images: null == images
+          ? _value._images
+          : images // ignore: cast_nullable_to_non_nullable
+              as List<ImageModel>,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MovieExtendModelCopyWith<$Res> get movie {
+    return $MovieExtendModelCopyWith<$Res>(_value.movie, (value) {
+      return _then(_value.copyWith(movie: value));
+    });
+  }
 }
 
 /// @nodoc
 
 class _$_MovieLoadSuccess implements _MovieLoadSuccess {
-  const _$_MovieLoadSuccess();
+  const _$_MovieLoadSuccess(
+      {required this.movie, required final List<ImageModel> images})
+      : _images = images;
+
+  @override
+  final MovieExtendModel movie;
+  final List<ImageModel> _images;
+  @override
+  List<ImageModel> get images {
+    if (_images is EqualUnmodifiableListView) return _images;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_images);
+  }
 
   @override
   String toString() {
-    return 'MovieState.loadSuccess()';
+    return 'MovieState.loadSuccess(movie: $movie, images: $images)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MovieLoadSuccess);
+        (other.runtimeType == runtimeType &&
+            other is _$_MovieLoadSuccess &&
+            (identical(other.movie, movie) || other.movie == movie) &&
+            const DeepCollectionEquality().equals(other._images, _images));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(
+      runtimeType, movie, const DeepCollectionEquality().hash(_images));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_MovieLoadSuccessCopyWith<_$_MovieLoadSuccess> get copyWith =>
+      __$$_MovieLoadSuccessCopyWithImpl<_$_MovieLoadSuccess>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(MovieExtendModel movie, List<ImageModel> images)
+        loadSuccess,
     required TResult Function(String errorText) loadFailure,
   }) {
-    return loadSuccess();
+    return loadSuccess(movie, images);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function()? loadSuccess,
+    TResult? Function(MovieExtendModel movie, List<ImageModel> images)?
+        loadSuccess,
     TResult? Function(String errorText)? loadFailure,
   }) {
-    return loadSuccess?.call();
+    return loadSuccess?.call(movie, images);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(MovieExtendModel movie, List<ImageModel> images)?
+        loadSuccess,
     TResult Function(String errorText)? loadFailure,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
-      return loadSuccess();
+      return loadSuccess(movie, images);
     }
     return orElse();
   }
@@ -498,7 +559,15 @@ class _$_MovieLoadSuccess implements _MovieLoadSuccess {
 }
 
 abstract class _MovieLoadSuccess implements MovieState {
-  const factory _MovieLoadSuccess() = _$_MovieLoadSuccess;
+  const factory _MovieLoadSuccess(
+      {required final MovieExtendModel movie,
+      required final List<ImageModel> images}) = _$_MovieLoadSuccess;
+
+  MovieExtendModel get movie;
+  List<ImageModel> get images;
+  @JsonKey(ignore: true)
+  _$$_MovieLoadSuccessCopyWith<_$_MovieLoadSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -567,7 +636,8 @@ class _$_MovieLoadFailure implements _MovieLoadFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadInProgress,
-    required TResult Function() loadSuccess,
+    required TResult Function(MovieExtendModel movie, List<ImageModel> images)
+        loadSuccess,
     required TResult Function(String errorText) loadFailure,
   }) {
     return loadFailure(errorText);
@@ -577,7 +647,8 @@ class _$_MovieLoadFailure implements _MovieLoadFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadInProgress,
-    TResult? Function()? loadSuccess,
+    TResult? Function(MovieExtendModel movie, List<ImageModel> images)?
+        loadSuccess,
     TResult? Function(String errorText)? loadFailure,
   }) {
     return loadFailure?.call(errorText);
@@ -587,7 +658,8 @@ class _$_MovieLoadFailure implements _MovieLoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadInProgress,
-    TResult Function()? loadSuccess,
+    TResult Function(MovieExtendModel movie, List<ImageModel> images)?
+        loadSuccess,
     TResult Function(String errorText)? loadFailure,
     required TResult orElse(),
   }) {

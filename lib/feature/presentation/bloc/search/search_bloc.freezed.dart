@@ -225,8 +225,7 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String keyword) loadInProgress,
-    required TResult Function(
-            List<SearchResultModel> searchResult, String keyword)
+    required TResult Function(List<MovieModel> searchResult, String keyword)
         loadSuccess,
     required TResult Function(String errorText, String keyword) loadFailure,
   }) =>
@@ -234,7 +233,7 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String keyword)? loadInProgress,
-    TResult? Function(List<SearchResultModel> searchResult, String keyword)?
+    TResult? Function(List<MovieModel> searchResult, String keyword)?
         loadSuccess,
     TResult? Function(String errorText, String keyword)? loadFailure,
   }) =>
@@ -242,7 +241,7 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String keyword)? loadInProgress,
-    TResult Function(List<SearchResultModel> searchResult, String keyword)?
+    TResult Function(List<MovieModel> searchResult, String keyword)?
         loadSuccess,
     TResult Function(String errorText, String keyword)? loadFailure,
     required TResult orElse(),
@@ -377,8 +376,7 @@ class _$_SearchLoadInProgress implements _SearchLoadInProgress {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String keyword) loadInProgress,
-    required TResult Function(
-            List<SearchResultModel> searchResult, String keyword)
+    required TResult Function(List<MovieModel> searchResult, String keyword)
         loadSuccess,
     required TResult Function(String errorText, String keyword) loadFailure,
   }) {
@@ -389,7 +387,7 @@ class _$_SearchLoadInProgress implements _SearchLoadInProgress {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String keyword)? loadInProgress,
-    TResult? Function(List<SearchResultModel> searchResult, String keyword)?
+    TResult? Function(List<MovieModel> searchResult, String keyword)?
         loadSuccess,
     TResult? Function(String errorText, String keyword)? loadFailure,
   }) {
@@ -400,7 +398,7 @@ class _$_SearchLoadInProgress implements _SearchLoadInProgress {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String keyword)? loadInProgress,
-    TResult Function(List<SearchResultModel> searchResult, String keyword)?
+    TResult Function(List<MovieModel> searchResult, String keyword)?
         loadSuccess,
     TResult Function(String errorText, String keyword)? loadFailure,
     required TResult orElse(),
@@ -466,7 +464,7 @@ abstract class _$$_SearchLoadSuccessCopyWith<$Res>
       __$$_SearchLoadSuccessCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<SearchResultModel> searchResult, String keyword});
+  $Res call({List<MovieModel> searchResult, String keyword});
 }
 
 /// @nodoc
@@ -487,7 +485,7 @@ class __$$_SearchLoadSuccessCopyWithImpl<$Res>
       searchResult: null == searchResult
           ? _value._searchResult
           : searchResult // ignore: cast_nullable_to_non_nullable
-              as List<SearchResultModel>,
+              as List<MovieModel>,
       keyword: null == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
@@ -500,13 +498,12 @@ class __$$_SearchLoadSuccessCopyWithImpl<$Res>
 
 class _$_SearchLoadSuccess implements _SearchLoadSuccess {
   const _$_SearchLoadSuccess(
-      {required final List<SearchResultModel> searchResult,
-      required this.keyword})
+      {required final List<MovieModel> searchResult, required this.keyword})
       : _searchResult = searchResult;
 
-  final List<SearchResultModel> _searchResult;
+  final List<MovieModel> _searchResult;
   @override
-  List<SearchResultModel> get searchResult {
+  List<MovieModel> get searchResult {
     if (_searchResult is EqualUnmodifiableListView) return _searchResult;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_searchResult);
@@ -545,8 +542,7 @@ class _$_SearchLoadSuccess implements _SearchLoadSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String keyword) loadInProgress,
-    required TResult Function(
-            List<SearchResultModel> searchResult, String keyword)
+    required TResult Function(List<MovieModel> searchResult, String keyword)
         loadSuccess,
     required TResult Function(String errorText, String keyword) loadFailure,
   }) {
@@ -557,7 +553,7 @@ class _$_SearchLoadSuccess implements _SearchLoadSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String keyword)? loadInProgress,
-    TResult? Function(List<SearchResultModel> searchResult, String keyword)?
+    TResult? Function(List<MovieModel> searchResult, String keyword)?
         loadSuccess,
     TResult? Function(String errorText, String keyword)? loadFailure,
   }) {
@@ -568,7 +564,7 @@ class _$_SearchLoadSuccess implements _SearchLoadSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String keyword)? loadInProgress,
-    TResult Function(List<SearchResultModel> searchResult, String keyword)?
+    TResult Function(List<MovieModel> searchResult, String keyword)?
         loadSuccess,
     TResult Function(String errorText, String keyword)? loadFailure,
     required TResult orElse(),
@@ -616,10 +612,10 @@ class _$_SearchLoadSuccess implements _SearchLoadSuccess {
 
 abstract class _SearchLoadSuccess implements SearchState {
   const factory _SearchLoadSuccess(
-      {required final List<SearchResultModel> searchResult,
+      {required final List<MovieModel> searchResult,
       required final String keyword}) = _$_SearchLoadSuccess;
 
-  List<SearchResultModel> get searchResult;
+  List<MovieModel> get searchResult;
   @override
   String get keyword;
   @override
@@ -705,8 +701,7 @@ class _$_SearchLoadFailure implements _SearchLoadFailure {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String keyword) loadInProgress,
-    required TResult Function(
-            List<SearchResultModel> searchResult, String keyword)
+    required TResult Function(List<MovieModel> searchResult, String keyword)
         loadSuccess,
     required TResult Function(String errorText, String keyword) loadFailure,
   }) {
@@ -717,7 +712,7 @@ class _$_SearchLoadFailure implements _SearchLoadFailure {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String keyword)? loadInProgress,
-    TResult? Function(List<SearchResultModel> searchResult, String keyword)?
+    TResult? Function(List<MovieModel> searchResult, String keyword)?
         loadSuccess,
     TResult? Function(String errorText, String keyword)? loadFailure,
   }) {
@@ -728,7 +723,7 @@ class _$_SearchLoadFailure implements _SearchLoadFailure {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String keyword)? loadInProgress,
-    TResult Function(List<SearchResultModel> searchResult, String keyword)?
+    TResult Function(List<MovieModel> searchResult, String keyword)?
         loadSuccess,
     TResult Function(String errorText, String keyword)? loadFailure,
     required TResult orElse(),

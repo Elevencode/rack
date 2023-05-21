@@ -17,4 +17,7 @@ abstract class IMovieRepository {
 
   /// Get random movie.
 Future<DataResult<MovieModel>> fetchRandomMovie();
+
+/// Get search results.
+Future<DataResult<List<MovieModel>>> fetchSearchResults(String searchValue);
 }

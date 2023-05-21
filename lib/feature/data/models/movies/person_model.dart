@@ -9,7 +9,7 @@ class PersonModel with _$PersonModel {
   const factory PersonModel({
     required int id,
     required String photo,
-    required String name,
+    String? name,
     required String profession,
   }) = _PersonModel;
 

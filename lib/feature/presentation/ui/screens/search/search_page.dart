@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:rack_app/config/utils/layout.dart';
+import 'package:rack_app/feature/presentation/bloc/movie/movie_bloc.dart';
 import 'package:rack_app/feature/presentation/bloc/search/search_bloc.dart';
+import 'package:rack_app/feature/presentation/router/route_names.dart';
 import 'package:rack_app/feature/presentation/ui/screens/search/widgets/search_app_bar.dart';
+import 'package:rack_app/feature/presentation/ui/screens/search/widgets/search_result_tile.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -25,18 +29,7 @@ class SearchPage extends StatelessWidget {
           loadFailure: (state) => Center(child: Text(state.errorText)),
           loadSuccess: (state) => ListView.builder(
             itemCount: state.searchResult.length,
-            itemBuilder: (context, i) => GestureDetector(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(state.searchResult[i].title, style: layout.fonts.styleB18,),
-                    const Icon(Icons.arrow_forward_ios_outlined)
-                  ],
-                ),
-              ),
-            ),
+            itemBuilder: (context, i) => SearchResultTile(movie: state.searchResult[i]),
           ),
         ),
       ),

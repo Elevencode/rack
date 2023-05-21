@@ -12,8 +12,9 @@ _$_MovieModel _$$_MovieModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String,
       type: json['type'] as String,
       year: json['year'] as int,
-      premiere:
-          PremiereModel.fromJson(json['premiere'] as Map<String, dynamic>),
+      premiere: json['premiere'] == null
+          ? null
+          : PremiereModel.fromJson(json['premiere'] as Map<String, dynamic>),
       description: json['description'] as String?,
       shortDescription: json['shortDescription'] as String?,
       alternativeName: json['alternativeName'] as String?,

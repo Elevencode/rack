@@ -25,6 +25,9 @@ _$_MovieExtendModel _$$_MovieExtendModelFromJson(Map<String, dynamic> json) =>
       rating: RatingModel.fromJson(json['rating'] as Map<String, dynamic>),
       movieLength: json['movieLength'] as int,
       ageRating: json['ageRating'] as int,
+      countries: (json['countries'] as List<dynamic>)
+          .map((e) => CountryModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       facts: (json['facts'] as List<dynamic>?)
           ?.map((e) => FactModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -48,6 +51,7 @@ Map<String, dynamic> _$$_MovieExtendModelToJson(_$_MovieExtendModel instance) =>
       'rating': instance.rating,
       'movieLength': instance.movieLength,
       'ageRating': instance.ageRating,
+      'countries': instance.countries,
       'facts': instance.facts,
       'similarMovies': instance.similarMovies,
       'alternativeName': instance.alternativeName,

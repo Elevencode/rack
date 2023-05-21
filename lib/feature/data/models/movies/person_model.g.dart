@@ -10,7 +10,7 @@ _$_PersonModel _$$_PersonModelFromJson(Map<String, dynamic> json) =>
     _$_PersonModel(
       id: json['id'] as int,
       photo: json['photo'] as String,
-      name: json['name'] as String,
+      name: json['name'] as String?,
       profession: json['profession'] as String,
     );
 

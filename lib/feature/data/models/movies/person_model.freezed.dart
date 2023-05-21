@@ -22,7 +22,7 @@ PersonModel _$PersonModelFromJson(Map<String, dynamic> json) {
 mixin _$PersonModel {
   int get id => throw _privateConstructorUsedError;
   String get photo => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String get profession => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +37,7 @@ abstract class $PersonModelCopyWith<$Res> {
           PersonModel value, $Res Function(PersonModel) then) =
       _$PersonModelCopyWithImpl<$Res, PersonModel>;
   @useResult
-  $Res call({int id, String photo, String name, String profession});
+  $Res call({int id, String photo, String? name, String profession});
 }
 
 /// @nodoc
@@ -55,7 +55,7 @@ class _$PersonModelCopyWithImpl<$Res, $Val extends PersonModel>
   $Res call({
     Object? id = null,
     Object? photo = null,
-    Object? name = null,
+    Object? name = freezed,
     Object? profession = null,
   }) {
     return _then(_value.copyWith(
@@ -67,10 +67,10 @@ class _$PersonModelCopyWithImpl<$Res, $Val extends PersonModel>
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profession: null == profession
           ? _value.profession
           : profession // ignore: cast_nullable_to_non_nullable
@@ -87,7 +87,7 @@ abstract class _$$_PersonModelCopyWith<$Res>
       __$$_PersonModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String photo, String name, String profession});
+  $Res call({int id, String photo, String? name, String profession});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$_PersonModelCopyWithImpl<$Res>
   $Res call({
     Object? id = null,
     Object? photo = null,
-    Object? name = null,
+    Object? name = freezed,
     Object? profession = null,
   }) {
     return _then(_$_PersonModel(
@@ -115,10 +115,10 @@ class __$$_PersonModelCopyWithImpl<$Res>
           ? _value.photo
           : photo // ignore: cast_nullable_to_non_nullable
               as String,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       profession: null == profession
           ? _value.profession
           : profession // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ class _$_PersonModel extends _PersonModel {
   const _$_PersonModel(
       {required this.id,
       required this.photo,
-      required this.name,
+      this.name,
       required this.profession})
       : super._();
 
@@ -145,7 +145,7 @@ class _$_PersonModel extends _PersonModel {
   @override
   final String photo;
   @override
-  final String name;
+  final String? name;
   @override
   final String profession;
 
@@ -188,7 +188,7 @@ abstract class _PersonModel extends PersonModel {
   const factory _PersonModel(
       {required final int id,
       required final String photo,
-      required final String name,
+      final String? name,
       required final String profession}) = _$_PersonModel;
   const _PersonModel._() : super._();
 
@@ -200,7 +200,7 @@ abstract class _PersonModel extends PersonModel {
   @override
   String get photo;
   @override
-  String get name;
+  String? get name;
   @override
   String get profession;
   @override

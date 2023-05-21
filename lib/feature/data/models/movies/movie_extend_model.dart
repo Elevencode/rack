@@ -1,5 +1,6 @@
 // ignore_for_file: invalid_annotation_target
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:rack_app/feature/data/models/movies/country_model.dart';
 import 'package:rack_app/feature/data/models/movies/fact_model.dart';
 import 'package:rack_app/feature/data/models/movies/genre_model.dart';
 import 'package:rack_app/feature/data/models/movies/person_model.dart';
@@ -26,6 +27,7 @@ class MovieExtendModel with _$MovieExtendModel {
     required RatingModel rating,
     required int movieLength,
     required int ageRating,
+    required List<CountryModel> countries,
     List<FactModel>? facts,
     List<SimilarMovieModel>? similarMovies,
     String? alternativeName,
