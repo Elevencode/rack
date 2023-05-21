@@ -25,10 +25,14 @@ class SearchPage extends StatelessWidget {
         builder: (context, state) => state.map(
           loadInProgress: (_) => const SearchLoadingWidget(),
           loadFailure: (state) => Center(child: Text(state.errorText)),
-          loadSuccess: (state) => ListView.builder(
-            itemCount: state.searchResult.length,
-            itemBuilder: (context, i) => SearchResultTile(movie: state.searchResult[i]),
-          ),
+          loadSuccess: (state) => state.searchResult.isEmpty
+              ? Center(
+                  child: Text('No movies', style: layout.fonts.styleB22),
+                )
+              : ListView.builder(
+                  itemCount: state.searchResult.length,
+                  itemBuilder: (context, i) => SearchResultTile(movie: state.searchResult[i]),
+                ),
         ),
       ),
     );
