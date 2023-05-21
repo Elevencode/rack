@@ -45,7 +45,7 @@ class SearchResultTile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.6,
+                  width: layout.width * 0.6,
                   // height: 60,
                   child: Align(
                     alignment: Alignment.centerLeft,

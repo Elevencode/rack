@@ -2,9 +2,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rack_app/feature/data/models/movies/movie_model.dart';
-import 'package:rack_app/feature/data/models/search/search_result_model.dart';
 import 'package:rack_app/feature/domain/repositories/i_movies_repository.dart';
-import 'package:rack_app/feature/domain/repositories/i_search_repository.dart';
 
 part 'search_event.dart';
 part 'search_state.dart';

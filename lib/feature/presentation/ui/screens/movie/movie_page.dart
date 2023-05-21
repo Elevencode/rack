@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:rack_app/config/utils/layout.dart';
 import 'package:rack_app/feature/presentation/bloc/movie/movie_bloc.dart';
 import 'package:rack_app/feature/presentation/ui/screens/movie/widgets/crew_view.dart';
-import 'package:rack_app/feature/presentation/ui/screens/movie/widgets/images_view.dart';
 import 'package:rack_app/feature/presentation/ui/screens/movie/widgets/movie_info.dart';
+import 'package:rack_app/feature/presentation/ui/shimmers/movie_page_shimmer.dart';
 
 class MoviePage extends StatelessWidget {
   final int id;
@@ -22,7 +22,7 @@ class MoviePage extends StatelessWidget {
       backgroundColor: layout.theme.background,
       body: BlocBuilder<MovieBloc, MovieState>(
         builder: (context, state) => state.map(
-          loadInProgress: (_) => const Center(child: CircularProgressIndicator()),
+          loadInProgress: (_) => const MoviePageShimmer(),
           loadFailure: (state) => Center(child: Text(state.errorText)),
           loadSuccess: (state) => CustomScrollView(
             slivers: [
@@ -47,15 +47,15 @@ class MoviePage extends StatelessWidget {
                     background: Stack(
                       children: [
                         SizedBox(
-                          width: MediaQuery.of(context).size.width,
+                          width: layout.width,
                           child: Image.network(
                             state.movie.poster.url,
                             fit: BoxFit.cover,
                           ),
                         ),
                         Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.width * 1.5,
+                          width: layout.width,
+                          height: layout.width * 1.5,
                           foregroundDecoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Colors.black, Colors.transparent],

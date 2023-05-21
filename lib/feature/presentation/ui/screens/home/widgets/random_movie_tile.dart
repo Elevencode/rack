@@ -24,16 +24,16 @@ class RandomMovieTile extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width * 1.4,
+              width: layout.width,
+              height: layout.width * 1.4,
               decoration: BoxDecoration(
                 image: DecorationImage(image: NetworkImage(movie.poster!.previewUrl), fit: BoxFit.cover),
               ),
             ),
             Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.width * 1.4,
-              foregroundDecoration: BoxDecoration(
+              width: layout.width,
+              height: layout.width * 1.4,
+              foregroundDecoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
                     Colors.black,
@@ -49,7 +49,7 @@ class RandomMovieTile extends StatelessWidget {
             Positioned(
               bottom: 1,
               child: SizedBox(
-                width: MediaQuery.of(context).size.width - 64,
+                width: layout.width - 64,
                 child: Center(
                   child: Text(
                     'TEXT TEXT TEXT TEXT TEXT TEXT adfkalfkadlfka;ldfl;adfk dkaokfaoprfkar adfmadkfmadkfa',

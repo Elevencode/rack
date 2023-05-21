@@ -29,8 +29,8 @@ class HomeSection extends StatelessWidget {
             child: Text(title, style: layout.fonts.styleB22),
           ),
           SizedBox(
-            height: 280,
-            width: MediaQuery.of(context).size.width,
+            height: 300,
+            width: layout.width,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -45,10 +45,9 @@ class HomeSection extends StatelessWidget {
                           ..pushNamed(RouteNames.movie, extra: movie.id, pathParameters: {'id': '${movie.id}'});
                       },
                       child: Padding(
-                        padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
-                        child: Container(
-                          width: 150,
-                          // height: 350,
+                        padding: const EdgeInsets.fromLTRB(8, 8, 16, 8),
+                        child: SizedBox(
+                          width: layout.width / 3,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -86,7 +85,7 @@ class HomeSection extends StatelessWidget {
                               ),
                               const SizedBox(height: 8),
                               SizedBox(
-                                height: 50,
+                                height: 55,
                                 child: Column(
                                   children: [
                                     Expanded(

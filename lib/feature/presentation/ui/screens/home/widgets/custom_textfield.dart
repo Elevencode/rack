@@ -32,7 +32,7 @@ class _CustomTextfieldState extends State<CustomTextfield> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: _layout.theme.searchTextfield),
-      width: MediaQuery.of(context).size.width - 64,
+      width: _layout.width - 64,
       height: 50,
       child: Center(
         child: TextField(
