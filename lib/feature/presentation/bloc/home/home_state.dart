@@ -7,6 +7,7 @@ class HomeState with _$HomeState {
   const factory HomeState.loadSuccess({
     required List<MovieModel> premieres,
     required List<MovieModel> digitalReleases,
+    MovieModel? randomMovie,
   }) = _HomeLoadSuccess;
 
   const factory HomeState.loadFailure(String errorText) = _HomeLoadFailure;

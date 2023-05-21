@@ -24,11 +24,12 @@ mixin _$MovieModel {
   String get name => throw _privateConstructorUsedError;
   String get type => throw _privateConstructorUsedError;
   int get year => throw _privateConstructorUsedError;
-  String get description => throw _privateConstructorUsedError;
   PremiereModel get premiere => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
   String? get shortDescription => throw _privateConstructorUsedError;
   String? get alternativeName => throw _privateConstructorUsedError;
   PosterModel? get poster => throw _privateConstructorUsedError;
+  LogoModel? get logo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,14 +48,16 @@ abstract class $MovieModelCopyWith<$Res> {
       String name,
       String type,
       int year,
-      String description,
       PremiereModel premiere,
+      String? description,
       String? shortDescription,
       String? alternativeName,
-      PosterModel? poster});
+      PosterModel? poster,
+      LogoModel? logo});
 
   $PremiereModelCopyWith<$Res> get premiere;
   $PosterModelCopyWith<$Res>? get poster;
+  $LogoModelCopyWith<$Res>? get logo;
 }
 
 /// @nodoc
@@ -74,11 +77,12 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
     Object? name = null,
     Object? type = null,
     Object? year = null,
-    Object? description = null,
     Object? premiere = null,
+    Object? description = freezed,
     Object? shortDescription = freezed,
     Object? alternativeName = freezed,
     Object? poster = freezed,
+    Object? logo = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -97,14 +101,14 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
       premiere: null == premiere
           ? _value.premiere
           : premiere // ignore: cast_nullable_to_non_nullable
               as PremiereModel,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       shortDescription: freezed == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -117,6 +121,10 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
           ? _value.poster
           : poster // ignore: cast_nullable_to_non_nullable
               as PosterModel?,
+      logo: freezed == logo
+          ? _value.logo
+          : logo // ignore: cast_nullable_to_non_nullable
+              as LogoModel?,
     ) as $Val);
   }
 
@@ -139,6 +147,18 @@ class _$MovieModelCopyWithImpl<$Res, $Val extends MovieModel>
       return _then(_value.copyWith(poster: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $LogoModelCopyWith<$Res>? get logo {
+    if (_value.logo == null) {
+      return null;
+    }
+
+    return $LogoModelCopyWith<$Res>(_value.logo!, (value) {
+      return _then(_value.copyWith(logo: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -154,16 +174,19 @@ abstract class _$$_MovieModelCopyWith<$Res>
       String name,
       String type,
       int year,
-      String description,
       PremiereModel premiere,
+      String? description,
       String? shortDescription,
       String? alternativeName,
-      PosterModel? poster});
+      PosterModel? poster,
+      LogoModel? logo});
 
   @override
   $PremiereModelCopyWith<$Res> get premiere;
   @override
   $PosterModelCopyWith<$Res>? get poster;
+  @override
+  $LogoModelCopyWith<$Res>? get logo;
 }
 
 /// @nodoc
@@ -181,11 +204,12 @@ class __$$_MovieModelCopyWithImpl<$Res>
     Object? name = null,
     Object? type = null,
     Object? year = null,
-    Object? description = null,
     Object? premiere = null,
+    Object? description = freezed,
     Object? shortDescription = freezed,
     Object? alternativeName = freezed,
     Object? poster = freezed,
+    Object? logo = freezed,
   }) {
     return _then(_$_MovieModel(
       id: null == id
@@ -204,14 +228,14 @@ class __$$_MovieModelCopyWithImpl<$Res>
           ? _value.year
           : year // ignore: cast_nullable_to_non_nullable
               as int,
-      description: null == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String,
       premiere: null == premiere
           ? _value.premiere
           : premiere // ignore: cast_nullable_to_non_nullable
               as PremiereModel,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
       shortDescription: freezed == shortDescription
           ? _value.shortDescription
           : shortDescription // ignore: cast_nullable_to_non_nullable
@@ -224,6 +248,10 @@ class __$$_MovieModelCopyWithImpl<$Res>
           ? _value.poster
           : poster // ignore: cast_nullable_to_non_nullable
               as PosterModel?,
+      logo: freezed == logo
+          ? _value.logo
+          : logo // ignore: cast_nullable_to_non_nullable
+              as LogoModel?,
     ));
   }
 }
@@ -236,11 +264,12 @@ class _$_MovieModel extends _MovieModel {
       required this.name,
       required this.type,
       required this.year,
-      required this.description,
       required this.premiere,
+      this.description,
       this.shortDescription,
       this.alternativeName,
-      this.poster})
+      this.poster,
+      this.logo})
       : super._();
 
   factory _$_MovieModel.fromJson(Map<String, dynamic> json) =>
@@ -255,19 +284,21 @@ class _$_MovieModel extends _MovieModel {
   @override
   final int year;
   @override
-  final String description;
-  @override
   final PremiereModel premiere;
+  @override
+  final String? description;
   @override
   final String? shortDescription;
   @override
   final String? alternativeName;
   @override
   final PosterModel? poster;
+  @override
+  final LogoModel? logo;
 
   @override
   String toString() {
-    return 'MovieModel(id: $id, name: $name, type: $type, year: $year, description: $description, premiere: $premiere, shortDescription: $shortDescription, alternativeName: $alternativeName, poster: $poster)';
+    return 'MovieModel(id: $id, name: $name, type: $type, year: $year, premiere: $premiere, description: $description, shortDescription: $shortDescription, alternativeName: $alternativeName, poster: $poster, logo: $logo)';
   }
 
   @override
@@ -279,21 +310,22 @@ class _$_MovieModel extends _MovieModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.type, type) || other.type == type) &&
             (identical(other.year, year) || other.year == year) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
             (identical(other.premiere, premiere) ||
                 other.premiere == premiere) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.shortDescription, shortDescription) ||
                 other.shortDescription == shortDescription) &&
             (identical(other.alternativeName, alternativeName) ||
                 other.alternativeName == alternativeName) &&
-            (identical(other.poster, poster) || other.poster == poster));
+            (identical(other.poster, poster) || other.poster == poster) &&
+            (identical(other.logo, logo) || other.logo == logo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, type, year,
-      description, premiere, shortDescription, alternativeName, poster);
+  int get hashCode => Object.hash(runtimeType, id, name, type, year, premiere,
+      description, shortDescription, alternativeName, poster, logo);
 
   @JsonKey(ignore: true)
   @override
@@ -315,11 +347,12 @@ abstract class _MovieModel extends MovieModel {
       required final String name,
       required final String type,
       required final int year,
-      required final String description,
       required final PremiereModel premiere,
+      final String? description,
       final String? shortDescription,
       final String? alternativeName,
-      final PosterModel? poster}) = _$_MovieModel;
+      final PosterModel? poster,
+      final LogoModel? logo}) = _$_MovieModel;
   const _MovieModel._() : super._();
 
   factory _MovieModel.fromJson(Map<String, dynamic> json) =
@@ -334,15 +367,17 @@ abstract class _MovieModel extends MovieModel {
   @override
   int get year;
   @override
-  String get description;
-  @override
   PremiereModel get premiere;
+  @override
+  String? get description;
   @override
   String? get shortDescription;
   @override
   String? get alternativeName;
   @override
   PosterModel? get poster;
+  @override
+  LogoModel? get logo;
   @override
   @JsonKey(ignore: true)
   _$$_MovieModelCopyWith<_$_MovieModel> get copyWith =>

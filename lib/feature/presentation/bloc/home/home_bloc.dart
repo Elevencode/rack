@@ -1,3 +1,4 @@
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
@@ -12,16 +13,18 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final IMovieRepository _movieRepository;
 
   HomeBloc(this._movieRepository) : super(const HomeState.loadInProgress()) {
-    on<_HomeFetched>(_onFetched);
+    on<_HomeFetched>(_onFetched, transformer: droppable());
   }
 
   Future<void> _onFetched(_HomeFetched event, Emitter<HomeState> emit) async {
     final dateRange = _getDateRange();
     final premieres = <MovieModel>[];
     final digitalReleases = <MovieModel>[];
+    MovieModel? randomMovie;
 
     final premieresResponse = await _movieRepository.fetchPremieres(dateRange);
     final digitalReleasesResponse = await _movieRepository.fetchDigitalReleases(dateRange);
+    final randomMovieResponse = await _movieRepository.fetchRandomMovie();
 
     premieresResponse.when(
       success: (movies) => premieres.addAll(movies),
@@ -33,7 +36,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       failure: (error) => emit(HomeState.loadFailure(error.toString())),
     );
 
-    emit(HomeState.loadSuccess(premieres: premieres, digitalReleases: digitalReleases));
+    randomMovieResponse.when(
+      success: (movie) => randomMovie = movie,
+      failure: (error) => emit(HomeState.loadFailure(error.toString())),
+    );
+
+    emit(HomeState.loadSuccess(
+      premieres: premieres,
+      digitalReleases: digitalReleases,
+      randomMovie: randomMovie,
+    ));
   }
 
   String _getDateRange() {

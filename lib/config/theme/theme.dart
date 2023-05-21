@@ -9,6 +9,9 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
   /// Цвет заднего фона [F8F9FD].
   final Color background;
 
+  /// Цвет текстфилда поиска.
+  final Color searchTextfield;
+
   /// Чистый белый [FFFFFF].
   final Color white;
 
@@ -137,10 +140,12 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
   final Color startedText;
   // --.
 
+
   CustomTheme({
     required this.brightness,
     required this.primary,
     required this.background,
+    required this.searchTextfield,
     required this.text,
     required this.white,
     required this.black,
@@ -207,6 +212,7 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
     Brightness? brightness,
     Color? primary,
     Color? background,
+    Color? searchTextfield,
     Color? text,
     Color? white,
     Color? black,
@@ -273,6 +279,7 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       brightness: brightness ?? this.brightness,
       primary: primary ?? this.primary,
       background: background ?? this.background,
+      searchTextfield: searchTextfield ?? this.searchTextfield,
       text: text ?? this.text,
       white: white ?? this.white,
       black: black ?? this.black,
@@ -348,6 +355,7 @@ class CustomTheme extends ThemeExtension<CustomTheme> {
       brightness: brightness,
       primary: Color.lerp(primary, other.primary, t)!,
       background: Color.lerp(background, other.background, t)!,
+      searchTextfield: Color.lerp(background, other.background, t)!,
       text: Color.lerp(text, other.text, t)!,
       white: Color.lerp(white, other.white, t)!,
       black: Color.lerp(black, other.black, t)!,
@@ -421,6 +429,7 @@ class AppTheme {
         brightness: Brightness.light,
         primary: const Color(0xFFBB2649),
         background: const Color(0xFFF8F8F8),
+        searchTextfield: const Color(0xFF7A0C26),
         text: const Color(0xFF212121),
         white: const Color(0xFFFFFFFF),
         black: const Color(0xFF000000),

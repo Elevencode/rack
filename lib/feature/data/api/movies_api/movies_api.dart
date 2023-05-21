@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:rack_app/feature/data/models/movies/movie_extend_request_model.dart';
+import 'package:rack_app/feature/data/models/movies/movie_model.dart';
 import 'package:rack_app/feature/data/models/movies/movie_request_model.dart';
 import 'package:retrofit/http.dart';
 
@@ -16,11 +18,14 @@ abstract class MoviesApi {
   Future<MovieRequestModel> getMovies(@Queries() Map<String, dynamic> queries);
 
   @GET('v1.3/movie')
-  Future<MovieRequestModel> getMovie(@Query('id') String query);
+  Future<MovieExtendRequestModel> getMovie(@Queries() Map<String, dynamic> query);
 
   @GET('v1.3/movie')
   Future<MovieRequestModel> getPremieres(@Queries() Map<String, dynamic> queries);
 
   @GET('v1.3/movie')
   Future<MovieRequestModel> getDigitalReleases(@Queries() Map<String, dynamic> queries);
+
+  @GET('v1/movie/random')
+  Future<MovieModel> getRandomMovie();
 }

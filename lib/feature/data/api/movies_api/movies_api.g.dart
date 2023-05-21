@@ -43,13 +43,14 @@ class _MoviesApi implements MoviesApi {
   }
 
   @override
-  Future<MovieRequestModel> getMovie(query) async {
+  Future<MovieExtendRequestModel> getMovie(query) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'id': query};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.addAll(query);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<MovieRequestModel>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<MovieExtendRequestModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -61,7 +62,7 @@ class _MoviesApi implements MoviesApi {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = MovieRequestModel.fromJson(_result.data!);
+    final value = MovieExtendRequestModel.fromJson(_result.data!);
     return value;
   }
 
@@ -110,6 +111,29 @@ class _MoviesApi implements MoviesApi {
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = MovieRequestModel.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<MovieModel> getRandomMovie() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<MovieModel>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'v1/movie/random',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = MovieModel.fromJson(_result.data!);
     return value;
   }
 

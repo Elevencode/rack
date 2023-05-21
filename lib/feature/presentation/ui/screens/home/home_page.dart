@@ -5,8 +5,7 @@ import 'package:rack_app/feature/presentation/bloc/home/home_bloc.dart';
 
 import 'package:rack_app/feature/presentation/ui/screens/home/widgets/custom_sliver_app_bar.dart';
 import 'package:rack_app/feature/presentation/ui/screens/home/widgets/home_section.dart';
-import 'package:rack_app/feature/presentation/ui/screens/home/widgets/tab_selector.dart';
-import 'package:sliver_tools/sliver_tools.dart';
+import 'package:rack_app/feature/presentation/ui/screens/home/widgets/random_movie_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,13 +15,13 @@ class HomePage extends StatelessWidget {
     final layout = Layout.of(context);
     context.read<HomeBloc>().add(const HomeEvent.fetched());
 
-    return BlocBuilder<HomeBloc, HomeState>(
-      builder: (context, state) => state.map(
-        loadInProgress: (_) => const Center(child: CircularProgressIndicator()),
-        loadFailure: (state) => Center(child: Text(state.errorText)),
-        loadSuccess: (state) => Scaffold(
-          backgroundColor: layout.theme.background,
-          body: CustomScrollView(
+    return Scaffold(
+      backgroundColor: layout.theme.background,
+      body: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) => state.map(
+          loadInProgress: (_) => const Center(child: CircularProgressIndicator()),
+          loadFailure: (state) => Center(child: Text(state.errorText)),
+          loadSuccess: (state) => CustomScrollView(
             slivers: [
               /// App bar.
               const CustomSliverAppBar(),
@@ -39,6 +38,12 @@ class HomePage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: HomeSection(movies: state.digitalReleases, title: 'Digital releases'),
               ),
+
+              /// Random movie.
+              if (state.randomMovie?.poster?.previewUrl != null)
+                SliverToBoxAdapter(
+                  child: RandomMovieTile(movie: state.randomMovie!),
+                ),
             ],
           ),
         ),
