@@ -5,6 +5,7 @@ import 'package:rack_app/feature/presentation/bloc/home/home_bloc.dart';
 
 import 'package:rack_app/feature/presentation/ui/screens/home/widgets/custom_sliver_app_bar.dart';
 import 'package:rack_app/feature/presentation/ui/screens/home/widgets/home_loading_widget.dart';
+import 'package:rack_app/feature/presentation/ui/screens/home/widgets/home_refresher.dart';
 import 'package:rack_app/feature/presentation/ui/screens/home/widgets/home_section.dart';
 import 'package:rack_app/feature/presentation/ui/screens/home/widgets/random_movie_tile.dart';
 
@@ -22,30 +23,46 @@ class HomePage extends StatelessWidget {
         builder: (context, state) => state.map(
           loadInProgress: (_) => const HomeLoadingWidget(),
           loadFailure: (state) => Center(child: Text(state.errorText)),
-          loadSuccess: (state) => CustomScrollView(
-            slivers: [
-              /// App bar.
-              const CustomSliverAppBar(),
+          loadSuccess: (state) => NestedScrollView(
+            headerSliverBuilder: (context, innerBoxScrolled) => [const CustomSliverAppBar()],
+            body: HomeRefresher(
+                child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  /// Premieres this month.
+                  HomeSection(movies: state.premieres, title: 'Premieres this month'),
 
-              /// Tab selector.
-              // const SliverPinnedHeader(child: TabSelector()),
+                  /// Digital releases.
+                  HomeSection(movies: state.digitalReleases, title: 'Digital releases'),
 
-              /// Premieres this month.
-              SliverToBoxAdapter(
-                child: HomeSection(movies: state.premieres, title: 'Premieres this month'),
+                  /// Random movie.
+                  if (state.randomMovie?.poster?.previewUrl != null) RandomMovieTile(movie: state.randomMovie!),
+                ],
               ),
+            )),
+            // slivers: [
+            //   /// App bar.
+            //   const CustomSliverAppBar(),
 
-              /// Digital releases.
-              SliverToBoxAdapter(
-                child: HomeSection(movies: state.digitalReleases, title: 'Digital releases'),
-              ),
+            //   /// Tab selector.
+            //   // const SliverPinnedHeader(child: TabSelector()),
 
-              /// Random movie.
-              if (state.randomMovie?.poster?.previewUrl != null)
-                SliverToBoxAdapter(
-                  child: RandomMovieTile(movie: state.randomMovie!),
-                ),
-            ],
+            //   /// Premieres this month.
+            //   SliverToBoxAdapter(
+            //     child: HomeSection(movies: state.premieres, title: 'Premieres this month'),
+            //   ),
+
+            //   /// Digital releases.
+            //   SliverToBoxAdapter(
+            //     child: HomeSection(movies: state.digitalReleases, title: 'Digital releases'),
+            //   ),
+
+            //   /// Random movie.
+            //   if (state.randomMovie?.poster?.previewUrl != null)
+            //     SliverToBoxAdapter(
+            //       child: RandomMovieTile(movie: state.randomMovie!),
+            //     ),
+            // ],
           ),
         ),
       ),

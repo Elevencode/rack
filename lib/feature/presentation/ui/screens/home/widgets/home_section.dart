@@ -57,11 +57,7 @@ class HomeSection extends StatelessWidget {
                                   children: [
                                     ClipRRect(
                                       borderRadius: BorderRadius.circular(10),
-                                      child: Image.network(
-                                        movie.poster!.previewUrl,
-                                        fit: BoxFit.fill,
-                                        // scale: 1,
-                                      ),
+                                      child: Image.network(movie.poster!.previewUrl, fit: BoxFit.fill),
                                     ),
                                     if (movie.premiere?.russia != null)
                                       Positioned(
